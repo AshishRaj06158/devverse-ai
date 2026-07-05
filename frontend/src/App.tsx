@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { AcademyProvider } from './context/AcademyContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Landing } from './pages/Landing';
@@ -17,6 +18,16 @@ import { PYQAnalyzer } from './pages/PYQAnalyzer';
 import { CodingTracker } from './pages/CodingTracker';
 import { PortfolioBuilder } from './pages/PortfolioBuilder';
 import { About } from './pages/About';
+
+// Academy imports
+import { AcademyHome } from './pages/academy/AcademyHome';
+import { CourseDetails } from './pages/academy/CourseDetails';
+import { CoursePlayer } from './pages/academy/CoursePlayer';
+import { StudentDashboard } from './pages/academy/StudentDashboard';
+import { InstructorDashboard } from './pages/academy/InstructorDashboard';
+import { EventsModule } from './pages/academy/EventsModule';
+import { CareerCenter } from './pages/academy/CareerCenter';
+import { CommunityForum } from './pages/academy/CommunityForum';
 
 // -------------------------------------------------------------
 // Protected Route Guards
@@ -147,6 +158,72 @@ export const AppContent: React.FC = () => {
             }
           />
 
+          {/* Academy protected routes */}
+          <Route
+            path="/academy"
+            element={
+              <ProtectedRoute>
+                <AcademyHome />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/academy/course/:courseId"
+            element={
+              <ProtectedRoute>
+                <CourseDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/academy/player/:courseId"
+            element={
+              <ProtectedRoute>
+                <CoursePlayer />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/academy/dashboard"
+            element={
+              <ProtectedRoute>
+                <StudentDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/academy/instructor"
+            element={
+              <ProtectedRoute>
+                <InstructorDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/academy/events"
+            element={
+              <ProtectedRoute>
+                <EventsModule />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/academy/careers"
+            element={
+              <ProtectedRoute>
+                <CareerCenter />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/academy/community"
+            element={
+              <ProtectedRoute>
+                <CommunityForum />
+              </ProtectedRoute>
+            }
+          />
+
           {/* Protected Admin Only Routes */}
           <Route
             path="/admin"
@@ -170,7 +247,9 @@ export const App: React.FC = () => {
   return (
     <Router>
       <AuthProvider>
-        <AppContent />
+        <AcademyProvider>
+          <AppContent />
+        </AcademyProvider>
       </AuthProvider>
     </Router>
   );

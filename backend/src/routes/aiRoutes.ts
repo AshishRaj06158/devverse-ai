@@ -7,7 +7,8 @@ import {
   generateInterviewQuestions,
   evaluateInterviewAnswers,
   summarizeNotes,
-  analyzePYQ
+  analyzePYQ,
+  summarizeAcademyLesson
 } from '../controllers/aiController';
 
 const router = Router();
@@ -28,5 +29,6 @@ router.post('/interview/questions', generateInterviewQuestions);
 router.post('/interview/feedback', evaluateInterviewAnswers);
 router.post('/summarize-notes', upload.single('file'), summarizeNotes);
 router.post('/analyze-pyq', upload.single('file'), analyzePYQ);
+router.post('/academy/summarize', summarizeAcademyLesson);
 
 export default router;

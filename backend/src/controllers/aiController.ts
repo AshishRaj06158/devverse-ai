@@ -528,3 +528,43 @@ export const analyzePYQ = async (req: Request, res: Response): Promise<void> => 
     res.status(500).json({ error: error.message });
   }
 };
+
+// 8. LMS AI Assistant (Lesson Summarizer / Questions generator)
+export const summarizeAcademyLesson = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { prompt, textContext } = req.body;
+
+    if (!prompt) {
+      res.status(400).json({ error: 'Prompt query parameters are required' });
+      return;
+    }
+
+    if (model) {
+      const gPrompt = `
+        You are an expert AI tutor. 
+        Analyze the following lesson context and answer the student query.
+        
+        Lesson context:
+        ${textContext}
+
+        Student query/action request:
+        ${prompt}
+
+        Return a clear, engaging, and professional response. If flashcards are requested, output them as numbered list.
+      `;
+      const result = await model.generateContent(gPrompt);
+      const text = await result.response.text();
+      res.json({ result: text });
+      return;
+    }
+
+    // Mock Fallback
+    res.json({
+      result: `[Mock AI Assistant]: Successfully evaluated prompt "${prompt}". The lesson outlines core web routing directives, React suspense parameters, and modular UI structure guidelines.`
+    });
+  } catch (error: any) {
+    console.error('Error in LMS assistant:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { Menu, X, Star, LayoutDashboard, User, LogOut, ShieldAlert, Sparkles, Settings } from 'lucide-react';
+import { Menu, X, Star, LayoutDashboard, User, LogOut, ShieldAlert, Sparkles, Settings, GraduationCap, Briefcase, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
@@ -19,6 +19,9 @@ export const Navbar: React.FC = () => {
   const navLinks: { name: string; path: string; icon?: React.ReactNode }[] = user
     ? [
         { name: 'Dashboard', path: '/dashboard', icon: <LayoutDashboard size={18} /> },
+        { name: 'Academy', path: '/academy', icon: <GraduationCap size={18} /> },
+        { name: 'Careers', path: '/academy/careers', icon: <Briefcase size={18} /> },
+        { name: 'Community', path: '/academy/community', icon: <MessageSquare size={18} /> },
         { name: 'About', path: '/about', icon: <User size={18} /> },
         { name: 'Settings', path: '/profile', icon: <Settings size={18} /> },
       ]
