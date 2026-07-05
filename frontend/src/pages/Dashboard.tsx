@@ -66,19 +66,36 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
       
-      {/* Welcome Banner */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-        <div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
-            Welcome back, {user?.displayName || 'Developer'}! <Sparkles className="text-primary animate-pulse" size={24} />
+      {/* Premium Welcome Banner Card */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="cyber-glow-banner animate-mesh-shift p-6 sm:p-8 rounded-3xl mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+      >
+        <div className="space-y-2 text-left z-10">
+          <div className="inline-flex items-center gap-1 bg-primary/20 border border-primary/30 px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">
+            <Sparkles size={12} className="text-accent animate-pulse" /> Career Dashboard
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+            Welcome back, <span className="bg-gradient-to-r from-white via-slate-100 to-accent bg-clip-text text-transparent">{user?.displayName || 'Developer'}</span>!
           </h1>
-          <p className="text-slate-400 text-sm mt-1">Here is a summary of your study sessions, career prep, and coding goals.</p>
+          <p className="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">
+            "Your workspace is ready. Today is a great day to audit your resume, practice mock coding interviews, or summarize heavy academic notes."
+          </p>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 border border-slate-700/80">
-          <Zap size={16} className="text-warning fill-warning" />
-          <span className="text-xs font-semibold text-white">Streak: {user?.streak || 5} Days</span>
+        
+        {/* Streak Stats Visual Card */}
+        <div className="flex items-center gap-4 bg-[#0F172A]/80 backdrop-blur-md border border-slate-800/80 p-4 rounded-2xl z-10 shadow-xl shrink-0 w-full md:w-auto">
+          <div className="w-12 h-12 rounded-xl bg-warning/10 border border-warning/20 flex items-center justify-center text-warning shrink-0">
+            <Zap size={24} className="fill-warning animate-bounce" style={{ animationDuration: '3s' }} />
+          </div>
+          <div className="text-left">
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">Daily Streak</span>
+            <span className="text-lg font-black text-white">{user?.streak || 5} Days Logged</span>
+            <span className="text-[9px] font-medium text-success block">Keep the momentum going!</span>
+          </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Metrics Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

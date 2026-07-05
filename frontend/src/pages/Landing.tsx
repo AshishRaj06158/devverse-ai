@@ -121,7 +121,14 @@ export const Landing: React.FC = () => {
   };
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden min-h-screen bg-gradient-mesh">
+      
+      {/* Decorative Neon Auroras */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] pointer-events-none overflow-hidden opacity-60 z-0">
+        <div className="absolute -top-[10%] left-[15%] w-[400px] h-[400px] rounded-full bg-primary/15 blur-[120px] animate-pulse" style={{ animationDuration: '8s' }}></div>
+        <div className="absolute top-[5%] right-[15%] w-[400px] h-[400px] rounded-full bg-secondary/15 blur-[120px] animate-pulse" style={{ animationDuration: '10s' }}></div>
+        <div className="absolute top-[25%] left-[35%] w-[300px] h-[300px] rounded-full bg-accent/15 blur-[100px] animate-pulse" style={{ animationDuration: '6s' }}></div>
+      </div>
       
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24">
@@ -131,9 +138,9 @@ export const Landing: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary mb-6"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 border border-primary/30 text-xs font-semibold text-primary mb-6 shadow-lg shadow-primary/5"
           >
-            <Zap size={14} className="animate-pulse" />
+            <Zap size={14} className="animate-pulse text-accent" />
             Empowering Next-Gen Engineers
           </motion.div>
 

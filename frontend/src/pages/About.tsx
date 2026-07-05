@@ -66,14 +66,24 @@ export const About: React.FC = () => {
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 text-left">
       
-      {/* Title Header */}
-      <div className="mb-10 text-center md:text-left">
-        <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Connect Card</span>
-        <h1 className="text-3xl font-extrabold text-white mt-2 font-display flex items-center justify-center md:justify-start gap-2">
-          About & Contact <User className="text-primary" size={24} />
-        </h1>
-        <p className="text-slate-400 text-sm mt-1">Get in touch, view work platforms, and establish direct channels of communication.</p>
-      </div>
+      {/* Premium Header Banner */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="cyber-glow-banner animate-mesh-shift p-6 sm:p-8 rounded-3xl mb-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+      >
+        <div className="space-y-2 text-left z-10">
+          <span className="inline-flex items-center gap-1 bg-primary/20 border border-primary/30 px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">
+            <User size={12} className="text-accent" /> Developer Info
+          </span>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+            About & Contact Details
+          </h1>
+          <p className="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">
+            Get in touch, view work platforms, and establish direct channels of communication.
+          </p>
+        </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         
