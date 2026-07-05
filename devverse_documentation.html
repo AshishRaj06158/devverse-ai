@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevVerse AI — Platform Documentation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+    
+    :root {
+      --primary: #3b82f6;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --bg: #0b0f19;
+      --card: #131a2e;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    
+    .meta-table td, .meta-table th {
+      padding: 12px 20px;
+      text-align: left;
+    }
+    
+    .meta-table th {
+      background-color: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .meta-table td {
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    }
+    
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 35px;
+      page-break-inside: avoid;
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .module-badge {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    .field-label {
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    
+    p.desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 15px;
+    }
+    
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    
+    li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+    }
+    
+    .file-path {
+      font-family: monospace;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      color: #e2e8f0;
+      display: inline-block;
+    }
+    
+    @media print {
+      body {
+        background-color: #fff;
+        color: #000;
+        padding: 0;
+      }
+      .section-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #000;
+        padding: 20px;
+        box-shadow: none;
+      }
+      .section-title {
+        color: #000;
+      }
+      .file-path {
+        background: #f1f5f9;
+        color: #000;
+        border: 1px solid #ccc;
+      }
+      li::before {
+        color: #000;
+      }
+      .field-label {
+        color: #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">DevVerse AI</div>
+      <p>Platform Architecture & Module Documentation Report</p>
+    </header>
+    
+    <table class="meta-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Developer Profile</strong></td>
+          <td>Ashish Raj (Phone: +91 9771596801, Email: ashishraj@gmail.com)</td>
+        </tr>
+        <tr>
+          <td><strong>Live Platform URL</strong></td>
+          <td><a href="https://devverse-client.onrender.com" target="_blank" style="color: var(--accent);">https://devverse-client.onrender.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Backend API URL</strong></td>
+          <td><a href="https://devverse-api.onrender.com" target="_blank" style="color: var(--accent);">https://devverse-api.onrender.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Module 1 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">📄 1. AI Resume Analyzer</div>
+        <span class="module-badge">Module 1</span>
+      </div>
+      <p class="desc">Scans resumes uploaded in PDF format or typed as plain text, compares the content against target developer roles using Gemini AI, and outputs detailed ATS audit reports.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>ATS Score meter (0-100) and Keyword match percentages.</li>
+        <li>Identifies missing professional technical keywords.</li>
+        <li>Generates actionable bullet point corrections and suggested alternative job matches.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/ResumeAnalyzer.tsx</span>
+    </div>
+
+    <!-- Module 2 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">🛠️ 2. Resume Builder</div>
+        <span class="module-badge">Module 2</span>
+      </div>
+      <p class="desc">A full form-based builder that helps users compile professional details and generates an exportable, clean PDF resume.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>Interactive forms (Personal info, Education, Experience, Projects).</li>
+        <li>AI description rephraser (rewrites rough experience sentences to sound metric-driven using Gemini).</li>
+        <li>One-click direct browser PDF generation and download.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/ResumeBuilder.tsx</span>
+    </div>
+
+    <!-- Module 3 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">✉️ 3. Cover Letter Generator</div>
+        <span class="module-badge">Module 3</span>
+      </div>
+      <p class="desc">Accepts custom job descriptions and resume profiles to write targeted cover letters that optimize user chances during job screening.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>Automatic alignment matching between resume text and job requirements.</li>
+        <li>Outputs editable cover letters in a structured copy-paste friendly screen.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/CoverLetterGenerator.tsx</span>
+    </div>
+
+    <!-- Module 4 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">🎤 4. AI Interview Coach</div>
+        <span class="module-badge">Module 4</span>
+      </div>
+      <p class="desc">Simulates technical and behavioral coding interviews. Employs modern web browser speech recognition to capture vocal answers.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>Speech-to-Text mic integrations allowing hands-free spoken answers.</li>
+        <li>Granular feedback cards rating grammar, confidence, and correctness.</li>
+        <li>Generates reference "Ideal Answers" using Gemini models.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/InterviewCoach.tsx</span>
+    </div>
+
+    <!-- Module 5 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">📚 5. Notes Summarizer</div>
+        <span class="module-badge">Module 5</span>
+      </div>
+      <p class="desc">Ingests massive study materials/syllabus PDFs and breaks them down into interactive study aids.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>Core summaries and short chapter breakdowns.</li>
+        <li>Generates flipping review flashcards and MCQ quizzes with scoring feedback.</li>
+        <li>Custom Zoomable/Draggable **Mind Map Canvas** representing conceptual nodes.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/NotesSummarizer.tsx</span>
+    </div>
+
+    <!-- Module 6 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">📊 6. PYQ Analyzer</div>
+        <span class="module-badge">Module 6</span>
+      </div>
+      <p class="desc">Designed for academic examination prep. Scans uploaded Previous Year Question papers to identify pattern trends.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>Calculates question repetition frequencies.</li>
+        <li>Renders dynamic Recharts bar charts showing difficulty distributions.</li>
+        <li>Gemini prediction engines guessing potential exam questions.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/PYQAnalyzer.tsx</span>
+    </div>
+
+    <!-- Module 7 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">💻 7. Coding Tracker</div>
+        <span class="module-badge">Module 7</span>
+      </div>
+      <p class="desc">Tracks daily LeetCode/HackerRank coding achievements, streaking history, and sets problem-solving goals.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>Log book keeping entries of easy, medium, and hard problems.</li>
+        <li>Responsive 35-day coding calendar heatmap visualizing active commit days.</li>
+        <li>Synchronized profile streak indicators linked to the main dashboard state.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/CodingTracker.tsx</span>
+    </div>
+
+    <!-- Module 8 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">🌐 8. AI Portfolio Builder</div>
+        <span class="module-badge">Module 8</span>
+      </div>
+      <p class="desc">Compiles project profiles, social URLs, and bio settings into downloadable, deployment-ready portfolio layouts.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>Fills experience timelines, stack lists, and education metrics.</li>
+        <li>Generates standard, beautifully styled production HTML code locally.</li>
+        <li>Instant HTML exporter saving the code file to the user's downloads folder.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/PortfolioBuilder.tsx</span>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">🛡️ 9. Admin Panel</div>
+        <span class="module-badge">Admin Systems</span>
+      </div>
+      <p class="desc">Main administration interface monitoring statistics and users.</p>
+      
+      <div class="field-label">Key Features</div>
+      <ul>
+        <li>Visual system metrics (CPU, RAM, API response times).</li>
+        <li>User directory tables allowing admins to toggle roles (Student/Admin) or suspend accounts.</li>
+        <li>Announcement broadcast forms broadcasted to all logged-in student dashboards.</li>
+      </ul>
+      
+      <div class="field-label">Source File Path</div>
+      <span class="file-path">frontend/src/pages/AdminPanel.tsx</span>
+    </div>
+    
+  </div>
+</body>
+</html>
