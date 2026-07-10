@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { Menu, X, Star, LayoutDashboard, User, LogOut, ShieldAlert, Sparkles, Settings, GraduationCap, Briefcase, MessageSquare } from 'lucide-react';
+import { Menu, X, Star, LayoutDashboard, User, LogOut, ShieldAlert, Sparkles, Settings, GraduationCap, Briefcase, MessageSquare, ChevronDown, Terminal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
   const { user, logoutUser } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aiDropdownOpen, setAiDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,8 +23,6 @@ export const Navbar: React.FC = () => {
         { name: 'Academy', path: '/academy', icon: <GraduationCap size={18} /> },
         { name: 'Careers', path: '/academy/careers', icon: <Briefcase size={18} /> },
         { name: 'Community', path: '/academy/community', icon: <MessageSquare size={18} /> },
-        { name: 'About', path: '/about', icon: <User size={18} /> },
-        { name: 'Settings', path: '/profile', icon: <Settings size={18} /> },
       ]
     : [
         { name: 'Features', path: '/#features' },
@@ -46,7 +45,6 @@ export const Navbar: React.FC = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       } else {
         navigate('/');
-        // Delayed scroll after navigation
         setTimeout(() => {
           document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -58,6 +56,18 @@ export const Navbar: React.FC = () => {
       setMobileMenuOpen(false);
     }
   };
+
+  const aiTools = [
+    { name: 'Study Planner', path: '/ai/study-planner' },
+    { name: 'Roadmap Generator', path: '/ai/roadmap' },
+    { name: 'AI Chat Advisor', path: '/ai/chat' },
+    { name: 'Coding Mentor', path: '/ai/mentor' },
+    { name: 'Career Advisor', path: '/ai/advisor' },
+    { name: 'Chat with PDF', path: '/ai/pdf-chat' },
+    { name: 'Research Assistant', path: '/ai/research' },
+    { name: 'Resume Analyzer', path: '/resume-analyzer' },
+    { name: 'Interview Coach', path: '/interview-coach' }
+  ];
 
   return (
     <nav className="sticky top-0 z-50 w-full glass-panel border-b border-slate-800 bg-[#0F172A]/80 backdrop-blur-md">
@@ -90,6 +100,39 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
+
+            {/* AI Lab Dropdown */}
+            {user && (
+              <div className="relative">
+                <button
+                  onClick={() => setAiDropdownOpen(!aiDropdownOpen)}
+                  onBlur={() => setTimeout(() => setAiDropdownOpen(false), 200)}
+                  className="flex items-center gap-1 text-sm font-medium text-slate-350 hover:text-white transition-colors"
+                >
+                  <Sparkles size={16} className="text-primary animate-pulse" /> AI Lab <ChevronDown size={14} />
+                </button>
+                <AnimatePresence>
+                  {aiDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="absolute right-0 mt-2 w-48 rounded-2xl bg-[#0b0f19] border border-slate-800 p-2 shadow-2xl z-50 text-left space-y-0.5"
+                    >
+                      {aiTools.map((tool) => (
+                        <Link
+                          key={tool.path}
+                          to={tool.path}
+                          className="block px-3.5 py-2 text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-900 rounded-xl transition-all"
+                        >
+                          {tool.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
 
             {user ? (
               <div className="flex items-center gap-4 pl-4 border-l border-slate-800">
@@ -167,6 +210,24 @@ export const Navbar: React.FC = () => {
                   {link.name}
                 </a>
               ))}
+
+              {user && (
+                <div className="pt-2 pb-2 border-t border-slate-850/80">
+                  <span className="px-3 text-[9px] font-bold text-slate-500 uppercase tracking-widest block mb-1">AI Labs Workspace</span>
+                  <div className="grid grid-cols-2 gap-1 px-2">
+                    {aiTools.map((t) => (
+                      <Link
+                        key={t.path}
+                        to={t.path}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800/40"
+                      >
+                        {t.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {user ? (
                 <div className="pt-4 mt-4 border-t border-slate-800 px-3">

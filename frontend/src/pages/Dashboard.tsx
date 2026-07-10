@@ -46,9 +46,12 @@ export const Dashboard: React.FC = () => {
 
   const quickActions = [
     { title: 'Analyze Resume', path: '/resume-analyzer', icon: <FileSearch size={20} className="text-primary" />, desc: 'Check ATS score and keywords' },
-    { title: 'Resume Builder', path: '/resume-builder', icon: <FileCode size={20} className="text-secondary" />, desc: 'Write PDF resume with AI' },
     { title: 'Interview Coach', path: '/interview-coach', icon: <Mic size={20} className="text-success" />, desc: 'Mock interview practice' },
-    { title: 'Notes Summarizer', path: '/notes-summarizer', icon: <BookOpen size={20} className="text-warning" />, desc: 'Flashcards & quizzes generator' },
+    { title: 'Study Planner', path: '/ai/study-planner', icon: <Sparkles size={20} className="text-secondary" />, desc: 'AI custom weekly syllabus schedules' },
+    { title: 'Roadmap Generator', path: '/ai/roadmap', icon: <TrendingUp size={20} className="text-accent" />, desc: 'Interactive mastery flow roadmaps' },
+    { title: 'Coding Mentor', path: '/ai/mentor', icon: <FileCode size={20} className="text-warning" />, desc: 'Review bugs and optimize scripts' },
+    { title: 'Career Advisor', path: '/ai/advisor', icon: <TrendingUp size={20} className="text-primary" />, desc: 'Role demand compatibility metrics' },
+    { title: 'Chat with PDF', path: '/ai/pdf-chat', icon: <BookOpen size={20} className="text-success" />, desc: 'Query uploaded document notes' }
   ];
 
   const recentActivity = [

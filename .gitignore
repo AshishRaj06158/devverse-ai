@@ -37,3 +37,7 @@ Thumbs.db
 
 # ─── Test artifacts ─────────────────────────────────────────────
 coverage/
+
+# ─── Local Backups ──────────────────────────────────────────────
+devverse_ai_project.zip
+

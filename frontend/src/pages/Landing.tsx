@@ -151,7 +151,7 @@ export const Landing: React.FC = () => {
             className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 font-display"
           >
             Learn. Build.{' '}
-            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent text-glow-purple">
               Get Hired.
             </span>
           </motion.h1>
@@ -160,7 +160,7 @@ export const Landing: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mx-auto max-w-2xl text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed"
+            className="mx-auto max-w-2xl text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed font-medium"
           >
             DevVerse AI brings together career accelerators, interview coaches, automated portfolios, study assistants, and coding trackers into a single, cohesive developer workspace.
           </motion.p>
@@ -180,11 +180,38 @@ export const Landing: React.FC = () => {
             </Link>
             <a
               href="#features"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-slate-300 hover:text-white glass-panel hover:bg-slate-800 transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-slate-350 hover:text-white glass-panel hover:bg-slate-800 transition-all duration-300"
             >
               Explore Modules
             </a>
           </motion.div>
+
+          {/* Trusted by Partner Logos */}
+          <div className="mt-12 space-y-4">
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">Trusted by developers at leading tech firms</span>
+            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-12 opacity-40 grayscale contrast-125">
+              <span className="text-sm font-black text-white tracking-widest font-display">GOOGLE</span>
+              <span className="text-sm font-black text-white tracking-widest font-display">MICROSOFT</span>
+              <span className="text-sm font-black text-white tracking-widest font-display">META</span>
+              <span className="text-sm font-black text-white tracking-widest font-display">VERCEL</span>
+              <span className="text-sm font-black text-white tracking-widest font-display">STRIPE</span>
+            </div>
+          </div>
+
+          {/* Metrics Statistics row counters */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {[
+              { val: '10,000+', lbl: 'Active Students' },
+              { val: '2,500+', lbl: 'Resumes Audited' },
+              { val: '5,000+', lbl: 'Quizzes Conducted' },
+              { val: '98%', lbl: 'ATS Pass Rate' }
+            ].map((stat, idx) => (
+              <div key={idx} className="glass-panel p-4 rounded-2xl border border-slate-850 text-center">
+                <h4 className="text-2xl font-black text-white font-display bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{stat.val}</h4>
+                <span className="text-[10px] text-slate-550 font-bold uppercase tracking-wider block mt-1">{stat.lbl}</span>
+              </div>
+            ))}
+          </div>
 
           {/* Floating dashboard mockup */}
           <motion.div
@@ -235,7 +262,7 @@ export const Landing: React.FC = () => {
           
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 font-display">
-              8 Powerful Modules in One Workspace
+              Unified Ecosystem for Developers
             </h2>
             <p className="text-slate-400">
               No more hopping between five different tools. DevVerse AI gives you a unified ecosystem to study, practice, build portfolios, and polish resumes.
@@ -278,8 +305,37 @@ export const Landing: React.FC = () => {
         </div>
       </section>
 
+      {/* Interactive Roadmap Timeline */}
+      <section className="py-20">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold text-white font-display">Engineering Preparation Roadmap</h2>
+            <p className="text-slate-400 mt-2 text-sm">Follow our visual preparation roadmap to transition from foundational programming to landing tech roles.</p>
+          </div>
+
+          <div className="relative pl-6 border-l-2 border-slate-800 space-y-8 text-left">
+            {[
+              { title: 'Core Programming Syntax', desc: 'Master variables, data structures, and standard modular functions.' },
+              { title: 'Syllabus Studies & Notes Summaries', desc: 'Summarize academic PDF materials and practice mock questionnaires.' },
+              { title: 'ATS Resume Optimizations', desc: 'Audit resume formats, target key metrics, and prepare mock interviews.' },
+              { title: 'Placement Hiring Kanban Pipeline', desc: 'Track jobs, apply for referrals, and land active offer sheets.' }
+            ].map((step, idx) => (
+              <div key={idx} className="relative">
+                <span className="absolute -left-9 top-1.5 w-6 h-6 rounded-full bg-[#131A2E] border border-primary text-xs font-bold text-primary flex items-center justify-center">
+                  {idx + 1}
+                </span>
+                <div className="p-5 bg-[#131A2E]/50 border border-slate-850 rounded-2xl space-y-1">
+                  <h4 className="text-xs font-black text-white uppercase tracking-wider">{step.title}</h4>
+                  <p className="text-xs text-slate-450 leading-relaxed text-slate-400">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* How it works Section */}
-      <section id="how-it-works" className="py-20">
+      <section id="how-it-works" className="py-20 bg-slate-900/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -327,7 +383,7 @@ export const Landing: React.FC = () => {
                       <Star key={i} size={14} className="fill-warning" />
                     ))}
                   </div>
-                  <p className="text-slate-300 text-sm italic leading-relaxed mb-6">"{test.quote}"</p>
+                  <p className="text-slate-350 text-sm italic leading-relaxed mb-6">"{test.quote}"</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <img src={test.image} alt={test.name} className="w-10 h-10 rounded-full border border-slate-700" />
@@ -361,7 +417,7 @@ export const Landing: React.FC = () => {
                 <p className="text-sm text-slate-500 mb-6">Perfect for sandbox testing and core templates.</p>
                 <div className="flex items-baseline gap-1 mb-8">
                   <span className="text-4xl font-extrabold text-white">$0</span>
-                  <span className="text-xs text-slate-500">/ forever</span>
+                  <span className="text-xs text-slate-550">/ forever</span>
                 </div>
                 <ul className="space-y-4 text-sm text-slate-400 mb-8">
                   <li className="flex items-center gap-2"><CheckCircle size={16} className="text-primary" /> 10 Resume Analyses per month</li>
@@ -472,7 +528,7 @@ export const Landing: React.FC = () => {
           </p>
           <Link
             to="/auth?mode=signup"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 border border-primary/20"
           >
             Get Started Free
             <ArrowRight size={18} />
